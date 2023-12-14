@@ -22,10 +22,14 @@ nav {
     height: 100%;
     display: flex;
     align-items: center;
-    cursor: pointer;
 }
 
-.left img {
+.left a {
+    display: flex;
+    align-items: center;
+}
+
+.left  a img {
     height: 45px;
 }
 
@@ -38,7 +42,7 @@ nav {
     gap: 16px;
 }
 
-nav a {
+.right a {
     width: fit-content;
     float: left;
     color: white;
