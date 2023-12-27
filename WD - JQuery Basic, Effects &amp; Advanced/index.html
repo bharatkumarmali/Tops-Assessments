@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- jQuery CDN  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- internal css  -->
+    <style>
+        body {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        input[type="text"] {
+            padding: 4px 5px;
+            outline: none;
+            border-radius: 2px;
+        }
+
+        span {
+            padding: 4px 5px;
+            border-radius: 2px;
+        }
+
+        .valid {
+            width: max-content;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1>Password Checker jQuery</h1>
+        <div class="valid">
+            <input type="text" id="input-1" oninput="fun1()"><span id="check"></span>
+        </div>
+    </div>
+
+    <script>
+        function fun1() {
+
+            console.log("hello");
+            let a = document.getElementById("input-1").value;
+            if (a.length <= 0 || a.length < 8) {
+                document.getElementById("check").innerHTML = "weak";
+                $("#check").css({ "background-color": "#ff00007d", "color": "white" })
+            }
+            else if (a.length <= 8 || a.length < 12) {
+                document.getElementById("check").innerHTML = "medium";
+                $("#check").css({ "background-color": "#0080008f", "color": "white" })
+            }
+            else {
+                document.getElementById("check").innerHTML = "strong";
+                $("#check").css({ "background-color": "#0080008f", "color": "white" })
+            }
+
+            if (!a) {
+                document.getElementById("check").innerHTML = "";
+                $("#check").css({ "background-color": "transparent", "color": "transparent" })
+            }
+        }
+    </script>
+</body>
+
+</html>
