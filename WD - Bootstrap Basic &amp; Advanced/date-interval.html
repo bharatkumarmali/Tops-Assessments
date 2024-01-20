@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Interval</title>
+
+    <!-- bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- jQuery cdn  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+
+<!-- internal css  -->
+<style>
+    #result {
+        width: 300px;
+        height: 260px;
+        padding: 10px;
+    }
+</style>
+
+<body>
+
+    <div class="container-fluid d-flex flex-column justify-content-center align-items-center"
+        style="width: 100%; height: 100vh;">
+        <form action="">
+            <table class="" callspacing="10" cellpadding="3">
+                <tr>
+                    <td colspan="3">
+                        <h1 class="display-5 text-capitalize">date interval</h1>
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td><label for="date-1" class="text-capitalize fw-bolder">form:</label></td>
+                    <td><input type="date" id="date-1"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="text-capitalize fw-bolder"><label for="date-2"
+                            class="text-capitalize fw-bolder">to:</label></td>
+                    <td><input type="date" id="date-2"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><button type="button" id="calculate-btn"
+                            class="btn border bg-primary text-white text-capitalize">calculate</button></td>
+                </tr>
+            </table>
+            <div id="result" class="bg-primary text-white my-4 shadow">
+
+            </div>
+        </form>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#calculate-btn").click(function () {
+                var fromDate = new Date($("#date-1").val());
+                var toDate = new Date($("#date-2").val());
+
+                var timeDiff = Math.abs(toDate.getTime() - fromDate.getTime());
+                var daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+                var years = Math.floor(daysDiff / 365);
+                var months = Math.floor((daysDiff % 365) / 30);
+                var weeks = Math.floor((daysDiff % 365) / 7);
+
+                $("#result").html("Date interval between <br>" + $("#date-1").val() + " and " + $("#date-2").val() + "<hr class='bg-white'>" +
+                    "<br>In Years: " + years + "<br>" + "In Months: " + months + "<br>" + "In Weeks: " + weeks + "<br>" + "In Days: " + daysDiff + "<hr class='bg-white my-4'>");
+            });
+        });
+    </script>
+
+</body>
+
+</html>
